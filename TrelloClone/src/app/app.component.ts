@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TrelloClone';
+names :string[] = ["Jim","Sara", "Steven"];
+show : boolean = true;
+toggle(){
+this.show = !this.show;
 }
+}
+
+
