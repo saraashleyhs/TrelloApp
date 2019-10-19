@@ -1,1 +1,55 @@
-<p>todo works!</p>
+<div class="container todo-item">
+    <div class="row">
+      <div class="col-md-8">
+        <h3 *ngIf="!todo.isEditing">{{ todo.title }}</h3>
+        <input
+          type="text"
+          class="form-control"
+          id="newTitle"
+          placeholder="Todo Title"
+          [(ngModel)]="todo.title"
+          *ngIf="todo.isEditing"
+        />
+      </div>
+      <div class="col-md-4">
+        <button
+          *ngIf="!todo.isEditing"
+          class="btn btn-link btn-sm"
+          (click)="toggleEdit()"
+        >
+          <i>Edit</i>
+        </button>
+        <button
+          *ngIf="todo.isEditing"
+          class="btn btn-link btn-sm"
+          (click)="toggleEdit()"
+        >
+          <i>Done</i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" (click)="delete()">
+              Delete
+            </button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-primary">Details</button>
+          </div>
+          <div *ngIf="!todo.isDoing && !todo.isDone" class="col-md-4">
+            <button class="btn btn-sm btn-info" (click)="setDoing()">
+              Doing
+            </button>
+          </div>
+          <div *ngIf="todo.isDoing && !todo.isDone" class="col-md-4">
+            <button class="btn btn-sm btn-success" (click)="setDone()">
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
