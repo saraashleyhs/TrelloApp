@@ -1,5 +1,33 @@
-<ul *ngIf="show">
-  <li *ngFor="let name of names">{{name}}</li>
-</ul>
-<button (click)= "toggle()" btn-large>Toggle</button>
+<div class="container">
+  <div class="row form-group">
+    <div for="newTitle" class="col-md-3">
+      <label>Add Todo</label>
+      <input
+        type="text"
+        class="form-control"
+        id="newTitle"
+        placeholder="Todo Title"
+        [(ngModel)]="newTodoTitle"
+      />
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-sm btn-success" (click)="addNew()">Add</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Todo</h3>
+      <app-todo-list [todos]="todoItems"></app-todo-list>
+    </div>
+    <div class="col-md-4">
+      <h3>Doing</h3>
+      <app-todo-list [todos]="doingItems"></app-todo-list>
+    </div>
+    <div class="col-md-4">
+      <h3>Done</h3>
+      <app-todo-list [todos]="doneItems"></app-todo-list>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
